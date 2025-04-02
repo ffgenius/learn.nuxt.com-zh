@@ -2,49 +2,49 @@
 ogImage: true
 ---
 
-# Rendering Modes
+# 渲染模式
 
-Nuxt supports various rendering modes.\
-Specifically, these include Universal Rendering, Client-Side Rendering, and Hybrid Rendering.
+Nuxt 支持各种渲染模式。\
+具体来说，这些包括通用渲染（Universal Rendering）、客户端渲染（Client-Side Rendering）和混合渲染（Hybrid Rendering）。
 
-By default, Universal Rendering is selected.\
-These modes can easily be switched via `nuxt.config`.
+默认情况下，通用渲染被选定。\
+这些模式可以通过 `nuxt.config` 轻松切换。
 
-## Universal Rendering
+## 通用渲染
 
-In Universal Rendering, the server returns fully rendered HTML.\
-This allows the user to access the application's content immediately.
+在通用渲染中，服务器返回完全渲染的 HTML。\
+这使用户能够立即访问应用程序的内容。
 
-After loading the HTML, the browser also loads JavaScript code to build dynamic UI that requires interaction.\
-This process is called "hydration".
+加载 HTML 后，浏览器还会加载 JavaScript 代码来构建需要交互的动态 UI。\
+这个过程称为"水合"（hydration）。
 
-In this example, we log a `count` state to the console in `app.vue`.\
-When accessing the page, you can see the output both in the terminal (server) and in the browser console.
+在这个例子中，我们在 `app.vue` 中将 `count` 状态记录到控制台。\
+当访问页面时，你可以在终端（服务器）和浏览器控制台中看到输出。
 
-This means that Nuxt executes Vue.js code on the server to generate HTML, and then runs the same code again in the browser.\
-This is why it is called "Universal Rendering".
+这意味着 Nuxt 在服务器上执行 Vue.js 代码以生成 HTML，然后在浏览器中再次运行相同的代码。\
+这就是为什么它被称为"通用渲染"。
 
-The main advantages and disadvantages of Universal Rendering are as follows:
+通用渲染的主要优点和缺点如下：
 
-### Advantages
+### 优点
 
-- Performance\
-  Since HTML is generated on the server and read by the browser, it is faster than generating content using JavaScript in the browser.
-- Search Engine Optimization (SEO)\
-  Web crawlers can directly index the page content, which is beneficial for SEO.
+- 性能\
+  由于 HTML 在服务器上生成并由浏览器读取，比在浏览器中使用 JavaScript 生成内容更快。
+- 搜索引擎优化（SEO）\
+  网络爬虫可以直接索引页面内容，这对 SEO 有利。
 
-### Disadvantages
+### 缺点
 
-- Development constraints\
-  Writing code that runs seamlessly on both server and client sides imposes some limitations.
-- Cost\
-  Requires a server, which incurs operational costs.
+- 开发限制\
+  编写在服务器和客户端都能无缝运行的代码会有一些限制。
+- 成本\
+  需要服务器，这会产生运营成本。
 
-For more details, see the [official documentation](https://nuxt.com/docs/guide/concepts/rendering#universal-rendering).
+更多详情，请参见[官方文档](https://nuxt.com/docs/guide/concepts/rendering#universal-rendering)。
 
-## Client-Side Rendering
+## 客户端渲染
 
-You can enable Client-Side Rendering by setting `ssr: false` in `nuxt.config`.
+你可以通过在 `nuxt.config` 中设置 `ssr: false` 来启用客户端渲染。
 
 ```ts
 // nuxt.config.ts
@@ -53,78 +53,78 @@ export default defineNuxtConfig({
 })
 ```
 
-With Client-Side Rendering, the application is rendered in the browser.\
-The browser downloads and parses all JavaScript code, which contains the instructions to construct the UI, then generates HTML elements.
+使用客户端渲染，应用程序在浏览器中渲染。\
+浏览器下载并解析所有 JavaScript 代码，其中包含构建 UI 的指令，然后生成 HTML 元素。
 
-The main advantages and disadvantages of Client-Side Rendering are as follows:
+客户端渲染的主要优点和缺点如下：
 
-### Advantages
+### 优点
 
-- Development speed\
-  You only need to consider how the application works in the browser, without worrying about server integration.
-- Cost-efficient\
-  No server is needed, so infrastructure costs are lower.
-- Offline capability\
-  Since all code runs in the browser, the app can continue working even without an internet connection.
+- 开发速度\
+  你只需要考虑应用程序在浏览器中的工作方式，而不必担心服务器集成。
+- 成本效益\
+  不需要服务器，因此基础设施成本较低。
+- 离线能力\
+  由于所有代码都在浏览器中运行，即使没有互联网连接，应用程序也可以继续工作。
 
-### Disadvantages
+### 缺点
 
-- Performance\
-  Users have to wait for the browser to download, parse, and execute JavaScript, which may affect user experience.
-- Search Engine Optimization (SEO)\
-  Indexing and updating content rendered on the client side takes time, which is less SEO-friendly compared to server-rendered HTML.
+- 性能\
+  用户必须等待浏览器下载、解析和执行 JavaScript，这可能会影响用户体验。
+- 搜索引擎优化（SEO）\
+  索引和更新客户端渲染的内容需要时间，这比服务器渲染的 HTML 对 SEO 的友好度较低。
 
-## Hybrid Rendering
+## 混合渲染
 
-Nuxt allows you to specify different cache rules and rendering modes for each route using route rules.
+Nuxt 允许你使用路由规则为每个路由指定不同的缓存规则和渲染模式。
 
-This is configured via the `routeRules` option in `nuxt.config`.
+这是通过 `nuxt.config` 中的 `routeRules` 选项配置的。
 
-For more details, refer to the [official documentation](https://nuxt.com/docs/guide/concepts/rendering#hybrid-rendering).
+更多详情，请参考[官方文档](https://nuxt.com/docs/guide/concepts/rendering#hybrid-rendering)。
 
 ```ts
 export default defineNuxtConfig({
   routeRules: {
-    // Homepage pre-rendered at build time
+    // 主页在构建时预渲染
     '/': { prerender: true },
-    // Blog list page generated on demand, revalidates in background, cached on CDN for 1 hour (3600 seconds)
+    // 博客列表页面按需生成，在后台重新验证，在 CDN 上缓存 1 小时（3600 秒）
     '/blog': { isr: 3600 },
-    // Blog post pages generated on demand once until next deployment, cached on CDN
+    // 博客文章页面按需生成一次，直到下次部署前，在 CDN 上缓存
     '/blog/**': { isr: true },
-    // Admin dashboard rendered only on the client-side
+    // 管理仪表板仅在客户端渲染
     '/admin/**': { ssr: false },
   }
 })
 ```
 
-## Challenge
+## 挑战
 
-Set up Client-Side Rendering and verify that Vue.js code runs only in the browser.
+设置客户端渲染并验证 Vue.js 代码仅在浏览器中运行。
 
-To do this:
+要做到这一点：
 
-1. Set `ssr: false` in `nuxt.config`.
-2. Log a `count` state to the console in `app.vue`.
-3. Confirm that there is no output in the terminal.
-4. Open the browser devtools and verify that the console shows the output.
+1. 在 `nuxt.config` 中设置 `ssr: false`。
+2. 在 `app.vue` 中将 `count` 状态记录到控制台。
+3. 确认终端中没有输出。
+4. 打开浏览器开发工具并验证控制台显示输出。
 
-Next, set up Hybrid Rendering and confirm that you can assign different cache rules and rendering modes per route.
+接下来，设置混合渲染并确认你可以为每个路由分配不同的缓存规则和渲染模式。
 
-To do this:
+要做到这一点：
 
-1. Use the `NuxtPage` component in `app.vue` to render pages.
-2. Add console output in the `script setup` of `/pages/index.vue` and `/pages/foo.vue` (any message is fine).
-3. Set `routeRules` in `nuxt.config`, applying different cache and rendering settings to `/` and `/foo`.\
-   This time, set `ssr: false` for `/foo`.
-4. Visit `/` and confirm that the console output appears both on the server and in the browser.
-5. Visit `/foo` and confirm that the console output appears only in the browser.
+1. 在 `app.vue` 中使用 `NuxtPage` 组件渲染页面。
+2. 在 `/pages/index.vue` 和 `/pages/foo.vue` 的 `script setup` 中添加控制台输出（任何消息都可以）。
+3. 在 `nuxt.config` 中设置 `routeRules`，为 `/` 和 `/foo` 应用不同的缓存和渲染设置。\
+   这次，为 `/foo` 设置 `ssr: false`。
+4. 访问 `/` 并确认控制台输出同时出现在服务器和浏览器中。
+5. 访问 `/foo` 并确认控制台输出仅出现在浏览器中。
 
 :ButtonShowSolution{.bg-faded.px4.py2.mb3.rounded.border.border-base.hover:bg-active.hover:text-primary.hover:border-primary:50}
 
 :::note
-To verify rendering behavior, it's important to check not just console output, but also the request behavior using the browser's "Network" tab.
+要验证渲染行为，重要的是不仅要检查控制台输出，还要使用浏览器的"网络"选项卡检查请求行为。
 
-With Universal Rendering, since HTML is generated on the server, you'll see a fully populated `<div id="__nuxt">` in the network response.\
-With Client-Side Rendering, the HTML will initially be empty and populated by JavaScript.\
-(The JavaScript will be visible as separate download requests)
+使用通用渲染，由于 HTML 在服务器上生成，你会在网络响应中看到一个完全填充的 `<div id="__nuxt">`。\
+使用客户端渲染，HTML 最初将为空，然后由 JavaScript 填充。\
+（JavaScript 将作为单独的下载请求可见）
 :::

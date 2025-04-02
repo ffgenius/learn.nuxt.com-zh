@@ -2,57 +2,57 @@
 ogImage: true
 ---
 
-# Routing
+# 路由
 
-## File-based routing
+## 基于文件的路由
 
-The file-based routing is one of Nuxt’s core features.\
-Each Vue file inside the `pages/` directory corresponds to a URL (route) and renders its content.\
-For example, `pages/index.vue` corresponds to `/`, and `pages/foo.vue` corresponds to `/foo`.\
-This routing system is built on [vue-router](https://router.vuejs.org/).
+基于文件的路由是 Nuxt 的核心功能之一。\
+`pages/` 目录中的每个 Vue 文件对应一个 URL（路由）并渲染其内容。\
+例如，`pages/index.vue` 对应 `/`，而 `pages/foo.vue` 对应 `/foo`。\
+这个路由系统基于 [vue-router](https://router.vuejs.org/)。
 
-Additionally, Nuxt optimizes each page through code splitting and other techniques, ensuring that only the minimal JavaScript required for the requested route is delivered.
+此外，Nuxt 通过代码分割和其他技术优化每个页面，确保只传送请求路由所需的最小 JavaScript 代码。
 
-## Navigation
+## 导航
 
-Once you've created routes inside the `pages/` directory, you can use the `<NuxtLink>` component for navigation.
+一旦你在 `pages/` 目录中创建了路由，你可以使用 `<NuxtLink>` 组件进行导航。
 
-The `<NuxtLink>` component allows you to specify the route using the `to` prop to create links.\
-Compared to using an `<a>` tag with an `href` attribute, `<NuxtLink>` automatically optimizes navigation, resulting in faster page transitions.
+`<NuxtLink>` 组件允许你使用 `to` 属性指定路由来创建链接。\
+与使用带有 `href` 属性的 `<a>` 标签相比，`<NuxtLink>` 自动优化导航，实现更快的页面过渡。
 
-## Route Parameters
+## 路由参数
 
-Inside the `/pages` directory, you can define dynamic routes by wrapping part of the filename in `[]`.\
-For example: `pages/posts/[id].vue`.
+在 `/pages` 目录中，你可以通过将文件名的一部分包装在 `[]` 中来定义动态路由。\
+例如：`pages/posts/[id].vue`。
 
-The route parameter inside `[]` can be accessed via `useRoute()`.
+可以通过 `useRoute()` 访问 `[]` 中的路由参数。
 
 ```vue
 <!-- pages/posts/[id].vue -->
 <script setup lang="ts">
 const route = useRoute()
 
-// When accessing /posts/1, route.params.id will be 1
+// 当访问 /posts/1 时，route.params.id 的值将为 1
 console.log(route.params.id)
 </script>
 ```
 
-## Challenge
+## 挑战
 
-Try implementing the `/posts/[id]` route and enabling navigation from `/` and `/foo` to `/posts/[id]`.\
-Additionally, in `/posts/[id]`, read the `id` from the route parameter and display it on the screen.
+尝试实现 `/posts/[id]` 路由，并启用从 `/` 和 `/foo` 到 `/posts/[id]` 的导航。\
+此外，在 `/posts/[id]` 中，从路由参数读取 `id` 并在屏幕上显示它。
 
-### Steps to complete:
+### 完成步骤：
 
-1. In `pages/posts/[id].vue`, use `useRoute()` to get `id` from `params` and display it on the screen.
-2. In `pages/index.vue` and `pages/foo.vue`, use `<NuxtLink>` to create links that navigate to `/posts/[id]`.\
-   For example, create a link that navigates to `/posts/1` (you can use any value).
+1. 在 `pages/posts/[id].vue` 中，使用 `useRoute()` 从 `params` 获取 `id` 并在屏幕上显示它。
+2. 在 `pages/index.vue` 和 `pages/foo.vue` 中，使用 `<NuxtLink>` 创建导航到 `/posts/[id]` 的链接。\
+   例如，创建一个导航到 `/posts/1` 的链接（你可以使用任何值）。
 
-If you get stuck, click the button below or the one in the top-right corner of the editor to view the solution.
+如果你遇到困难，可以点击下面的按钮或编辑器右上角的按钮查看解决方案。
 
 :ButtonShowSolution{.bg-faded.px4.py2.rounded.border.border-base.hover:bg-active.hover:text-primary.hover:border-primary:50}
 
 ---
 
-The `useRoute` function and `<NuxtLink>` component introduced in this section are automatically imported by Nuxt’s Auto Imports feature, so you don’t need to manually import them.\
-In the next section, we will explore [Auto Imports](/concepts/auto-imports) in more detail.
+本节介绍的 `useRoute` 函数和 `<NuxtLink>` 组件由 Nuxt 的自动导入功能自动导入，因此你不需要手动导入它们。\
+在下一节中，我们将详细探讨[自动导入](/concepts/auto-imports)。

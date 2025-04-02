@@ -1,5 +1,5 @@
-# Vue Basics Summary
+# Vue 基础总结
 
-Great! You've learned the basics of Vue. If you are interested in learning more about Vue, check out the [official Vue documentation](https://vuejs.org/) for more in-depth guides and tutorials.
+恭喜你！你已经掌握了 Vue 的基础知识。想要进一步深入学习 Vue，推荐查阅 [Vue 官方文档](https://vuejs.org/)，那里提供了更全面详细的指南和教程。
 
-Up next, let's start to explore how Nuxt would make your development experience even better.
+现在，让我们一起来探索 Nuxt 如何为你带来更出色的开发体验吧！

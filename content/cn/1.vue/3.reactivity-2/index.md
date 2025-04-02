@@ -2,8 +2,8 @@
 ogImage: true
 ---
 
-# Reactivity Part 2
+# 响应式 第2部分
 
-In the previous section, we learned about `ref` and `computed`. In this section, we will learn about `reactive` and `watch` that fullfills our basic needs for reactivity.
+在上一节中，我们学习了 `ref` 和 `computed`。在本节中，我们将学习 `reactive` 和 `watch`，它们满足了我们对响应式的基本需求。
 
 // TODO:

@@ -2,11 +2,11 @@
 ogImage: true
 ---
 
-# Layout
+# 布局
 
-Nuxt provides features that enable the reuse of UI patterns.\
-Layouts are implemented in the `~/layouts` directory and applied using `NuxtLayout` in `app.vue`.\
-Each page can specify a layout by using `definePageMeta`.
+Nuxt 提供了能够重用 UI 模式的功能。\
+布局在 `~/layouts` 目录中实现，并使用 `app.vue` 中的 `NuxtLayout` 应用。\
+每个页面可以通过使用 `definePageMeta` 指定布局。
 
 ```
 ├── layouts/

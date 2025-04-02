@@ -2,17 +2,17 @@
 ogImage: true
 ---
 
-# Middleware
+# 中间件
 
-Nuxt provides middleware that allows you to execute code before navigating to a specific route.\
-This feature is useful for cases such as restricting access to pages based on authentication status.
+Nuxt 提供的中间件功能允许你在页面导航前执行自定义代码。
+这个功能在需要根据用户登录状态限制页面访问等场景中特别有用。
 
-There are two types of middleware: global middleware and named route middleware.\
-Both are implemented in the `middleware` directory.
+中间件分为两种类型：全局中间件和命名路由中间件。
+这两种类型都在项目的 `middleware` 目录中定义。
 
-## Global Middleware
+## 全局中间件
 
-Global middleware can be defined as follows:
+全局中间件会在每次路由导航时自动执行，定义方式如下：
 
 ```
 ├── middleware/
@@ -26,9 +26,9 @@ export default defineNuxtRouteMiddleware(() => {
 })
 ```
 
-## Named route middleware
+## 命名路由中间件
 
-Named route middleware can be defined as follows:
+命名路由中间件可以按如下方式定义：
 
 ```
 ├── middleware/
@@ -55,28 +55,28 @@ definePageMeta({
 </template>
 ```
 
-## Middleware Execution Timing
+## 中间件执行时机
 
-These middleware functions are executed not only during client-side navigation but also on the server side when rendering pages with SSR or SSG.\
-If you are using client-side APIs such as local storage within middleware, you need to ensure that the middleware runs only on the client side.\
-You can determine the execution environment using `import.meta`.\
-To skip execution on the server side, use `import.meta.server`.
+这些中间件函数不仅在客户端导航期间执行，而且在使用 SSR 或 SSG 渲染页面时也在服务器端执行。\
+如果你在中间件内使用本地存储等客户端 API，你需要确保中间件仅在客户端运行。\
+你可以使用 `import.meta` 确定执行环境。\
+要跳过服务器端执行，可以使用 `import.meta.server`。
 
 ```ts
 export default defineNuxtRouteMiddleware((to) => {
-  // Skip middleware on the server (equivalent to if (import.meta.client) { ... })
+  // 在服务器端跳过中间件执行（等同于 if (import.meta.client) { ... }）
   if (import.meta.server)
     return
 
-  // Some processing
+  // 一些处理
   window.localStorage.setItem('key', 'value')
 })
 ```
 
-## Challenge
+## 挑战
 
-Create middleware that reads information from `localStorage` and allows access to `/foo` only if a specific value is present.\
-In this example, we will create middleware that grants access to `/foo` only if the key `isSignedIn` is set to `true`.\
-Additionally, add a button in `index.vue` to allow users to set this value.
+创建一个从 `localStorage` 读取信息的中间件，并仅在存在特定值时允许访问 `/foo`。\
+在这个例子中，我们将创建一个中间件，只有当键 `isSignedIn` 设置为 `true` 时才允许访问 `/foo`。\
+此外，在 `index.vue` 中添加一个按钮，允许用户设置这个值。
 
 :ButtonShowSolution{.bg-faded.px4.py2.rounded.border.border-base.hover:bg-active.hover:text-primary.hover:border-primary:50}
