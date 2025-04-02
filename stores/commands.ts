@@ -22,7 +22,8 @@ export const useCommandsStore = defineStore('commands', () => {
   }))
 
   const { locale } = useI18n()
-  const collection = computed(() => locale.value === 'ja' ? 'ja' : 'en')
+  // const collection = computed(() => locale.value === 'ja' ? 'ja' : 'en')
+  const collection = locale
 
   const { data: sections } = useAsyncData('search-sections', () => {
     return queryCollectionSearchSections(collection.value, {

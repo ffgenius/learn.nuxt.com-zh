@@ -5,7 +5,8 @@ const runtime = useRuntimeConfig()
 const route = useRoute()
 const { locale } = useI18n()
 
-const collection = computed(() => locale.value === 'ja' ? 'ja' : 'en')
+// const collection = computed(() => locale.value === 'ja' ? 'ja' : 'en')
+const collection = locale
 
 const { data: page } = useAsyncData(`${locale.value}-${route.path}`, () => {
   return queryCollection(collection.value)

@@ -16,5 +16,12 @@ export default defineContentConfig({
         exclude: ['**/.template/**'],
       },
     }),
+    cn: defineCollection({
+      type: 'page',
+      source: {
+        include: 'cn/**',
+        exclude: ['**/.template/**'],
+      },
+    }),
   },
 })

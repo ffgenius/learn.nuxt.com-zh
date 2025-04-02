@@ -65,6 +65,17 @@ addCommands(
       return i18n.locale.value !== 'ja'
     },
   },
+  {
+    id: 'language-zn',
+    title: '简体中文',
+    handler: () => {
+      i18n.setLocale('cn')
+    },
+    icon: 'i-ph-globe-duotone',
+    visible: () => {
+      return i18n.locale.value !== 'cn'
+    },
+  },
 )
 </script>
 

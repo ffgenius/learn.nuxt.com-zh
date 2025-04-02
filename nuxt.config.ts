@@ -140,6 +140,11 @@ export default defineNuxtConfig({
         code: 'ja',
         file: 'ja.yaml',
       },
+      {
+        name: '简体中文',
+        code: 'cn',
+        file: 'cn.yaml',
+      },
     ],
     lazy: true,
     strategy: 'prefix',

@@ -1,0 +1,25 @@
+guide: 开始
+edit-this-page: 在 GitHub 上编辑此页
+terminal:
+  name: 终端
+  restart: 重新启动终端
+  hide: 隐藏终端
+  toggle: 切换终端
+download-zip: 下载 Playground 为 ZIP 文件
+work-in-progress: 正在进行的工作
+search: 搜索
+color-mode:
+  to-dark: 切换到深色模式
+  to-light: 切换到浅色模式
+coming-soon: 即将推出
+reset-challenge: 重置挑战
+show-solution: 显示解决方案
+search-dots: 搜索中...
+steps:
+  initializing-webcontainer: WebContainer 初始化
+  mounting-files: 文件加载中
+  installing-dependencies: 依赖安装中
+  starting-nuxt-server: Nuxt 服务启动中
+  waiting-for-nuxt-to-ready: 等待 Nuxt 准备就绪
+restart-server: 重启服务
+interactive-terminal-mode: 交互式终端模式
