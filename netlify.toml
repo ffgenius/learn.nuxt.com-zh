@@ -1,8 +1,8 @@
 # example netlify.toml
 [build]
   command = "pnpm run build"
-  functions = ".netlify"
-  publish = ".nuxt"
+  publish =".output/public"
+  functions =".output/server'
 
   ## Uncomment to use this redirect for Single Page Applications like create-react-app.
   ## Not needed for static site generators.
