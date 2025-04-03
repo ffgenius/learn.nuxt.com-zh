@@ -1,0 +1,33 @@
+[build]
+command = "pnpm build"
+publish = ".output/public"
+
+[build.environment]
+NODE_VERSION = "22"
+NPM_FLAGS = "--version"
+
+[functions]
+# 如果使用Netlify函数，可以指定目录
+directory = ".output/server"
+
+[[redirects]]
+# 确保SPA路由正常工作
+from = "/*"
+to = "/index.html"
+status = 200
+
+[dev]
+command = "pnpm dev"
+port = 3000
+
+[[headers]]
+# 为所有资源设置缓存控制
+for = "/*"
+[headers.values]
+cache-control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+# 为静态资源设置更长的缓存时间
+for = "/_nuxt/*"
+[headers.values]
+cache-control = "public, max-age=31536000, immutable"
