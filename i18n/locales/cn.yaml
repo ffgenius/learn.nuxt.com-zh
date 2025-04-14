@@ -23,3 +23,8 @@ steps:
   waiting-for-nuxt-to-ready: 等待 Nuxt 准备就绪
 restart-server: 重启服务
 interactive-terminal-mode: 交互式终端模式
+files: 文件
+preview: 预览
+built: 构建
+vueVersion: Vue 版本
+nuxtVersion: Nuxt 版本
